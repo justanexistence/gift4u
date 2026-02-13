@@ -228,11 +228,16 @@ footer {
 
 #memoryBtn {
     opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    visibility: hidden;
+    transform: translateY(14px);
+    transition: 
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0.8s ease;
 }
 
 #memoryBtn.show {
     opacity: 1;
+    visibility: visible;
     transform: translateY(0);
 }
