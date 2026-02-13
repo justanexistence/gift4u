@@ -41,21 +41,47 @@ Always.
 
 I’m not going anywhere.`;
 
-function typeWriterEffect(text, elementId, speed = 20) {
+
+/* =========================
+   TYPEWRITER EFFECT
+========================= */
+
+function typeWriterEffect(text, elementId, speed = 22) {
     const element = document.getElementById(elementId);
     element.innerHTML = "";
     let i = 0;
 
+    const cursor = document.createElement("span");
+    cursor.classList.add("cursor");
+    element.appendChild(cursor);
+
     function type() {
         if (i < text.length) {
-            element.innerHTML += text.charAt(i);
+            element.insertBefore(
+                document.createTextNode(text.charAt(i)),
+                cursor
+            );
             i++;
-            setTimeout(type, speed);
+
+            const naturalSpeed = speed + Math.random() * 25;
+            setTimeout(type, naturalSpeed);
+        } else {
+            cursor.remove();
+            revealMemoryButton();
         }
     }
 
     type();
 }
+
+function revealMemoryButton() {
+    memoryBtn.classList.add("show");
+}
+
+
+/* =========================
+   MOVE NO BUTTON
+========================= */
 
 function moveNoButton() {
     const buttonWidth = noBtn.offsetWidth;
@@ -75,6 +101,11 @@ function moveNoButton() {
 noBtn.addEventListener("mouseover", moveNoButton);
 noBtn.addEventListener("touchstart", moveNoButton);
 
+
+/* =========================
+   YES BUTTON FLOW
+========================= */
+
 yesBtn.addEventListener("click", () => {
     if (navigator.vibrate) {
         navigator.vibrate(80);
@@ -87,9 +118,14 @@ yesBtn.addEventListener("click", () => {
     setTimeout(() => {
         celebration.classList.add("hidden");
         loveSection.classList.remove("hidden");
-        typeWriterEffect(message, "typewriter", 18);
+        typeWriterEffect(message, "typewriter", 22);
     }, 4000);
 });
+
+
+/* =========================
+   MEMORY POPUP
+========================= */
 
 memoryBtn.addEventListener("click", () => {
     popup.classList.remove("hidden");
@@ -98,6 +134,11 @@ memoryBtn.addEventListener("click", () => {
 closePopup.addEventListener("click", () => {
     popup.classList.add("hidden");
 });
+
+
+/* =========================
+   CONFETTI
+========================= */
 
 function launchConfetti() {
     const canvas = document.getElementById("confetti");
