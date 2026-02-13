@@ -108,6 +108,7 @@ button:active {
     font-size: 15px;
     line-height: 1.9;
     margin-bottom: 30px;
+    white-space: pre-wrap;
 }
 
 .love-list {
