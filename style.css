@@ -207,7 +207,7 @@ footer {
 /* Typewriter Cursor */
 .cursor {
     display: inline-block;
-    width: 3px;
+    width: 1px;
     height: 1.2em;
     background-color: #b03060;
     margin-left: 4px;
