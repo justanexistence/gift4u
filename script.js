@@ -51,9 +51,11 @@ function typeWriterEffect(text, elementId, speed = 22) {
     element.innerHTML = "";
     let i = 0;
 
-    const cursor = document.createElement("span");
-    cursor.classList.add("cursor");
-    element.appendChild(cursor);
+const cursor = document.createElement("span");
+cursor.classList.add("cursor");
+cursor.textContent = "|";
+element.appendChild(cursor);
+
 
     function type() {
         if (i < text.length) {
